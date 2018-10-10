@@ -1,4 +1,4 @@
-namespace Xlang.CodeAnalysis
+namespace Xlang.CodeAnalysis.Syntax
 {
     public enum SyntaxKind
     {
@@ -18,6 +18,7 @@ namespace Xlang.CodeAnalysis
 
         LiteralExpression,
         BinaryExpression,
-        ParenthesizedExpression
+        ParenthesizedExpression,
+        UnaryExpression
     }
 }
