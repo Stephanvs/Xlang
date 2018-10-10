@@ -59,43 +59,44 @@ namespace Xlang.CodeAnalysis
             return new SyntaxToken(kind, Current.Position, null, null);
         }
 
-        private ExpressionSyntax ParseExpression() => ParseTerm();
-
         public SyntaxTree Parse()
         {
-            var expresion = ParseTerm();
+            var expresion = ParseExpression();
             var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
             return new SyntaxTree(_diagnostics, expresion, endOfFileToken);
         }
 
-        private ExpressionSyntax ParseTerm()
+        private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
         {
-            var left = ParseFactor();
+            var left = ParsePrimaryExpression();
 
-            while (Current.Kind == SyntaxKind.PlusToken ||
-                   Current.Kind == SyntaxKind.MinusToken)
+            while (true)
             {
+                var precedence = GetBinaryOperatorPrecedence(Current.Kind);
+                if (precedence == 0 || precedence <= parentPrecedence)
+                    break;
+
                 var operatorToken = NextToken();
-                var right = ParseFactor();
+                var right = ParseExpression(precedence);
                 left = new BinaryExpressionSyntax(left, operatorToken, right);
             }
 
             return left;
         }
 
-        private ExpressionSyntax ParseFactor()
+        private static int GetBinaryOperatorPrecedence(SyntaxKind kind)
         {
-            var left = ParsePrimaryExpression();
-
-            while (Current.Kind == SyntaxKind.StarToken ||
-                   Current.Kind == SyntaxKind.SlashToken)
+            switch (kind)
             {
-                var operatorToken = NextToken();
-                var right = ParsePrimaryExpression();
-                left = new BinaryExpressionSyntax(left, operatorToken, right);
+                case SyntaxKind.StarToken:
+                case SyntaxKind.SlashToken:
+                    return 2;
+                case SyntaxKind.PlusToken:
+                case SyntaxKind.MinusToken:
+                    return 1;
+                default:
+                    return 0;
             }
-
-            return left;
         }
 
         private ExpressionSyntax ParsePrimaryExpression()
