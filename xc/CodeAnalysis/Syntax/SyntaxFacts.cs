@@ -1,31 +1,56 @@
+using System;
+
 namespace Xlang.CodeAnalysis.Syntax
 {
     internal static class SyntaxFacts
     {
-        internal static int GetUnaryOperatorPrecedence(this SyntaxKind kind)
+        public static int GetUnaryOperatorPrecedence(this SyntaxKind kind)
         {
             switch (kind)
             {
                 case SyntaxKind.PlusToken:
                 case SyntaxKind.MinusToken:
-                    return 3;
+                case SyntaxKind.BangToken:
+                    return 5;
+
                 default:
                     return 0;
             }
         }
 
-        internal static int GetBinaryOperatorPrecedence(this SyntaxKind kind)
+        public static int GetBinaryOperatorPrecedence(this SyntaxKind kind)
         {
             switch (kind)
             {
                 case SyntaxKind.StarToken:
                 case SyntaxKind.SlashToken:
-                    return 2;
+                    return 4;
+
                 case SyntaxKind.PlusToken:
                 case SyntaxKind.MinusToken:
+                    return 3;
+
+                case SyntaxKind.AmpersandAmpersandToken:
+                    return 2;
+
+                case SyntaxKind.PipePipeToken:
                     return 1;
+
                 default:
                     return 0;
+            }
+        }
+
+        public static SyntaxKind GetKeywordKind(string text)
+        {
+            switch (text)
+            {
+                case "true":
+                    return SyntaxKind.TrueKeyword;
+                case "false":
+                    return SyntaxKind.FalseKeyword;
+                default:
+                    return SyntaxKind.IdentifierToken;
             }
         }
     }

@@ -1,0 +1,12 @@
+namespace Xlang.CodeAnalysis.Binding
+{
+    internal enum BoundBinaryOperatorKind
+    {
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division,
+        LogicalAnd,
+        LogicalOr
+    }
+}
