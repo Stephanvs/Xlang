@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace Xlang.CodeAnalysis
 {
-
     internal sealed class Parser
     {
         private readonly SyntaxToken[] _tokens;
