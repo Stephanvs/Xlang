@@ -5,9 +5,9 @@ using Xlang.CodeAnalysis;
 
 namespace Xlang
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var showTree = true;
 
@@ -78,7 +78,7 @@ namespace Xlang
 
             Console.WriteLine();
             
-            indent += isLast ? "    " : "│   ";
+            indent += isLast ? "   " : "│   ";
 
             var lastChild = node.GetChildren().LastOrDefault();
 

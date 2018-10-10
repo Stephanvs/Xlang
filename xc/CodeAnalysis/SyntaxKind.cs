@@ -1,6 +1,6 @@
 namespace Xlang.CodeAnalysis
 {
-    enum SyntaxKind
+    public enum SyntaxKind
     {
         NumberToken,
         WhitespaceToken,
@@ -12,7 +12,7 @@ namespace Xlang.CodeAnalysis
         CloseParenthesisToken,
         BadToken,
         EndOfFileToken,
-        NumberExpression,
+        LiteralExpression,
         BinaryExpression,
         ParenthesizedExpression
     }
