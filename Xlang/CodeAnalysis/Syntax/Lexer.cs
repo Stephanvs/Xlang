@@ -109,7 +109,11 @@ namespace Xlang.CodeAnalysis.Syntax
                         _position += 2;
                         return new SyntaxToken(SyntaxKind.EqualsEqualsToken, start, "==", null);
                     }
-                    break;
+                    else
+                    {
+                        _position += 1;
+                        return new SyntaxToken(SyntaxKind.EqualsToken, start, "=", null);
+                    }
                 case '!':
                     if (Lookahead == '=')
                     {
@@ -118,7 +122,7 @@ namespace Xlang.CodeAnalysis.Syntax
                     }
                     else
                     {
-                        _position += 2;
+                        _position += 1;
                         return new SyntaxToken(SyntaxKind.BangToken, start, "!", null);
                     }
             }

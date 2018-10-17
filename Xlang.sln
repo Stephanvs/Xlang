@@ -1,9 +1,8 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlang", "xc\Xlang.csproj", "{4EE7DEB4-C217-4A0A-9138-9AED37AE1720}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xc", "xc\xc.csproj", "{4EE7DEB4-C217-4A0A-9138-9AED37AE1720}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlang", "Xlang\Xlang.csproj", "{C3DFC385-F23A-4A5A-8E21-B9F761A1BCC6}"
 EndProject

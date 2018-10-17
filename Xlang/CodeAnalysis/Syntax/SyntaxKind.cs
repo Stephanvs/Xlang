@@ -12,6 +12,7 @@ namespace Xlang.CodeAnalysis.Syntax
         StarToken,
         SlashToken,
         BangToken,
+        EqualsToken,
         AmpersandAmpersandToken,
         PipePipeToken,
         EqualsEqualsToken,
@@ -26,8 +27,10 @@ namespace Xlang.CodeAnalysis.Syntax
 
         // Expressions
         LiteralExpression,
+        NameExpression,
         UnaryExpression,
         BinaryExpression,
-        ParenthesizedExpression
+        ParenthesizedExpression,
+        AssignmentExpression
     }
 }
