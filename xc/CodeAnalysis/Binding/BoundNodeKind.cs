@@ -3,6 +3,7 @@ namespace Xlang.CodeAnalysis.Binding
     internal enum BoundNodeKind
     {
         LiteralExpression,
-        UnaryExpression
+        UnaryExpression,
+        BinaryExpression
     }
 }
