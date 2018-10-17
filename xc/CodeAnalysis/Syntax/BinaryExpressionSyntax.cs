@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Xlang.CodeAnalysis
+namespace Xlang.CodeAnalysis.Syntax
 {
-    sealed class BinaryExpressionSyntax : ExpressionSyntax
+    public sealed class BinaryExpressionSyntax : ExpressionSyntax
     {
         public BinaryExpressionSyntax(ExpressionSyntax left, SyntaxToken operatorToken, ExpressionSyntax right)
         {

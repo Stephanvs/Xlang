@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Xlang.CodeAnalysis
+namespace Xlang.CodeAnalysis.Syntax
 {
-    class SyntaxToken : SyntaxNode
+    public class SyntaxToken : SyntaxNode
     {
         public SyntaxToken(SyntaxKind kind, int position, string text, object value)
         {
