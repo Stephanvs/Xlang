@@ -1,6 +1,5 @@
 ﻿using System;
 using Xlang.CodeAnalysis.Binding;
-using Xlang.CodeAnalysis.Syntax;
 
 namespace Xlang.CodeAnalysis
 {
