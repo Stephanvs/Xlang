@@ -8,7 +8,7 @@ namespace Xlang.Tests.CodeAnalysis.Syntax
     public class SyntaxFactTests
     {
         [Theory]
-        [MemberData(nameof(GetSyntaxKindData ))]
+        [MemberData(nameof(GetSyntaxKindData))]
         public void SyntaxFact_GetText_RoundTrips(SyntaxKind kind)
         {
             var text = SyntaxFacts.GetText(kind);
