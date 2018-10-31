@@ -17,7 +17,7 @@ steps:
 - script: dotnet test $(tests) --logger "xunit;LogFileName=TestResults.xml"
   displayName: 'dotnet test'
 
--task: PublishTestResults@2
+- task: PublishTestResults@2
   displayName: 'Publish Test Results'
   inputs:
     testResultsFormat: 'xUnit'
