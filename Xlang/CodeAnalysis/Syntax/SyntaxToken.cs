@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Xlang.CodeAnalysis.Text;
 
 namespace Xlang.CodeAnalysis.Syntax
 {

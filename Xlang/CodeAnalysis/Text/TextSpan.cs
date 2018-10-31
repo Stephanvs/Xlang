@@ -1,4 +1,4 @@
-namespace Xlang.CodeAnalysis
+namespace Xlang.CodeAnalysis.Text
 {
     public struct TextSpan
     {
