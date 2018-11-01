@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Xlang.CodeAnalysis.Text;
 
 namespace Xlang.CodeAnalysis.Syntax
 {
@@ -17,9 +18,6 @@ namespace Xlang.CodeAnalysis.Syntax
         public int Position { get; }
         public string Text { get; }
         public object Value { get; }
-        public TextSpan Span => new TextSpan(Position, Text.Length);
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-            => Enumerable.Empty<SyntaxNode>();
+        public override TextSpan Span => new TextSpan(Position, Text?.Length ?? 0);
     }
 }

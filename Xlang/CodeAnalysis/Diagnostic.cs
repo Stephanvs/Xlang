@@ -1,3 +1,5 @@
+using Xlang.CodeAnalysis.Text;
+
 namespace Xlang.CodeAnalysis
 {
     public sealed class Diagnostic

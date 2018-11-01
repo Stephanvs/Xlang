@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Xlang.CodeAnalysis.Syntax;
+using Xlang.CodeAnalysis.Text;
 
 namespace Xlang.CodeAnalysis
 {
