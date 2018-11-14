@@ -19,18 +19,14 @@ namespace Xlang
 
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+
                 if (textBuilder.Length == 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("~> ");
-                    Console.ResetColor();
-                }
                 else
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("+> ");
-                    Console.ResetColor();
-                }
+                    Console.Write("︙ ");
+
+                Console.ResetColor();
 
                 var input = Console.ReadLine();
                 var isBlank = string.IsNullOrWhiteSpace(input);
@@ -76,7 +72,11 @@ namespace Xlang
 
                 if (!diagnostics.Any())
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("● ");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(result.Value);
+                    Console.ResetColor();
                 }
                 else
                 {
