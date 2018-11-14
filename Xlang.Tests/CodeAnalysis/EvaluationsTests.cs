@@ -29,7 +29,7 @@ namespace Xlang.Tests.CodeAnalysis
         [InlineData("true", true)]
         [InlineData("!false", true)]
         [InlineData("!true", false)]
-        [InlineData("(a = 10) * a", 100)]
+        [InlineData("{ var a = 0 (a = 10) * a }", 100)]
         public void Evaluator_Evaluate_RoundTrips(string text, object expectedValue)
         {
             var syntaxTree = SyntaxTree.Parse(text);
