@@ -69,7 +69,7 @@ namespace Xlang.CodeAnalysis.Text
                 }
             }
 
-            if (position > lineStart)
+            if (position >= lineStart)
                 AddLine(builder, sourceText, position, lineStart, 0);
 
             return builder.ToImmutable();
