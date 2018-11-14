@@ -120,7 +120,8 @@ namespace Xlang.Tests.CodeAnalysis.Syntax
         {
             var syntaxTree = SyntaxTree.Parse(expression);
             var root = syntaxTree.Root;
-            return root.Expression;
+            var statement = root.Statement;
+            return Assert.IsType<ExpressionStatementSyntax>(statement).Expression;
         }
 
         public static IEnumerable<object[]> GetUnaryOperatorPairsData()
