@@ -16,21 +16,18 @@ namespace Xlang
             var showTree = false;
             var variables = new Dictionary<VariableSymbol, object>();
             var textBuilder = new StringBuilder();
+            Compilation previous = null;
 
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+
                 if (textBuilder.Length == 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("~> ");
-                    Console.ResetColor();
-                }
                 else
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("+> ");
-                    Console.ResetColor();
-                }
+                    Console.Write("︙ ");
+
+                Console.ResetColor();
 
                 var input = Console.ReadLine();
                 var isBlank = string.IsNullOrWhiteSpace(input);
@@ -52,6 +49,11 @@ namespace Xlang
                         Console.Clear();
                         continue;
                     }
+                    else if (input == "#reset")
+                    {
+                        previous = null;
+                        continue;
+                    }
                 }
 
                 textBuilder.AppendLine(input);
@@ -62,7 +64,10 @@ namespace Xlang
                 if (!isBlank && syntaxTree.Diagnostics.Any())
                     continue;
 
-                var compilation = new Compilation(syntaxTree);
+                var compilation = previous == null
+                    ? new Compilation(syntaxTree)
+                    : previous.ContinueWith(syntaxTree);
+
                 var result = compilation.Evaluate(variables);
 
                 var diagnostics = result.Diagnostics; 
@@ -76,7 +81,12 @@ namespace Xlang
 
                 if (!diagnostics.Any())
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("● ");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(result.Value);
+                    Console.ResetColor();
+                    previous = compilation;
                 }
                 else
                 {

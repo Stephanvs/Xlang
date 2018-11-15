@@ -19,11 +19,23 @@ namespace Xlang.CodeAnalysis.Syntax
         BangEqualsToken,
         OpenParenthesisToken,
         CloseParenthesisToken,
+        OpenBraceToken,
+        CloseBraceToken,
         IdentifierToken,
 
         // Keywords
         FalseKeyword,
+        LetKeyword,
         TrueKeyword,
+        VarKeyword,
+
+        // Nodes
+        CompilationUnit,
+
+        // Statements
+        BlockStatement,
+        VariableDeclarationStatement,
+        ExpressionStatement,
 
         // Expressions
         LiteralExpression,

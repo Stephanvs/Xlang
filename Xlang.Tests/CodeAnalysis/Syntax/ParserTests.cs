@@ -17,7 +17,7 @@ namespace Xlang.Tests.CodeAnalysis.Syntax
             var op2Text = SyntaxFacts.GetText(op2);
 
             var text = $"a {op1Text} b {op2Text} c";
-            var expression = SyntaxTree.Parse(text).Root;
+            var expression = ParseExpression(text);
 
             if (op1Precedence >= op2Precedence)
             {
@@ -74,7 +74,7 @@ namespace Xlang.Tests.CodeAnalysis.Syntax
             var binaryText = SyntaxFacts.GetText(binaryKind);
 
             var text = $"{unaryText} a {binaryText} b";
-            var expression = SyntaxTree.Parse(text).Root;
+            var expression = ParseExpression(text);
 
             if (unaryPrecedence >= binaryPrecedence)
             {
@@ -114,6 +114,14 @@ namespace Xlang.Tests.CodeAnalysis.Syntax
                     e.AssertToken(SyntaxKind.IdentifierToken, "b");
                 }
             }
+        }
+
+        private static ExpressionSyntax ParseExpression(string expression)
+        {
+            var syntaxTree = SyntaxTree.Parse(expression);
+            var root = syntaxTree.Root;
+            var statement = root.Statement;
+            return Assert.IsType<ExpressionStatementSyntax>(statement).Expression;
         }
 
         public static IEnumerable<object[]> GetUnaryOperatorPairsData()
